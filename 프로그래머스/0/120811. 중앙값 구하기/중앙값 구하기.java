@@ -16,6 +16,8 @@ class Solution {
             }
         }
         
+        // Arrays.sort(array);
+        
         answer = array[array.length / 2];
         
         return answer;
