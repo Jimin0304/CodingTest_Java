@@ -7,6 +7,8 @@ class Solution {
             string_builder.append(my_string.charAt(i));
         }
         
+        //string_builder.reverse();
+        
         answer = string_builder.toString();
         
         return answer;
