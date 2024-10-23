@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 class Solution {
-    public ArrayList<Integer> solution(int n, int[] numlist) {
+    public int[] solution(int n, int[] numlist) {
         ArrayList<Integer> answer = new ArrayList<>();
         
         for (int num : numlist) {
@@ -9,6 +9,6 @@ class Solution {
                 answer.add(num);
         }
         
-        return answer;
+        return answer.stream().mapToInt(x -> x).toArray();
     }
 }
