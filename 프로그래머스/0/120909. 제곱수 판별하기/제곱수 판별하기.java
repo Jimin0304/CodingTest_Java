@@ -1,11 +1,11 @@
 class Solution {
     public int solution(int n) {
-        int answer = 2;
+        int answer = 0;
         
-        for (int i = 1; i <= Math.sqrt(n); i++) {
-            if  (i * i == n)
-                answer = 1;
-        }
+        if (n % Math.sqrt(n) == 0)
+            answer = 1;
+        else
+            answer = 2;
         
         return answer;
     }
