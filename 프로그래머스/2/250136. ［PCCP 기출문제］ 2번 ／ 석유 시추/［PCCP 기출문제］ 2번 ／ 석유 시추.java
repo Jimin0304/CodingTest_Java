@@ -59,7 +59,7 @@ class Solution {
     public int solution(int[][] land) {
         int max = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
-        int index = 2;
+        int index = 2;  // 석유 캐낸 땅 라벨링
         boolean[][] visited = new boolean[land.length][land[0].length];
         
         for (int i = 0 ; i < land[0].length; i++) {
