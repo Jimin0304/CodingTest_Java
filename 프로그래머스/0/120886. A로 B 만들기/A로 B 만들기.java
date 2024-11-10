@@ -1,24 +1,12 @@
 class Solution {
     public int solution(String before, String after) {
-        int answer = 1;
-        boolean[] visited = new boolean[after.length()];
-        
+        int answer = 0;
         for (int i = 0; i < before.length(); i++) {
-            for (int j = 0; j < visited.length; j++) {
-                if (visited[j]) continue ;
-                if (before.charAt(i) == after.charAt(j)) {
-                    visited[j] = true;
-                    break ;
-                }
-            }
+            after = after.replaceFirst(before.substring(i, i + 1), "");
         }
         
-        for (int i = 0; i < visited.length; i++) {
-            if (!visited[i]) {
-                answer = 0;
-                break ;
-            }
-        }
+        if (after.length() == 0)
+            answer = 1;
         
         return answer;
     }
