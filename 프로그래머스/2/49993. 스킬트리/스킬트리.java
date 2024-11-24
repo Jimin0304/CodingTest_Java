@@ -3,17 +3,15 @@ import java.util.*;
 class Solution {
     public int solution(String skill, String[] skill_trees) {
         int impossible = 0;
-        List<Character> skill_list = new ArrayList<>();
         Stack<Character> st = new Stack<>();
-        for (int i = 0; i < skill.length(); i++) {
-            skill_list.add(skill.charAt(i));
-            st.push(skill.charAt(skill.length() - 1 - i));
+        for (int i = skill.length() - 1; i >= 0; i--) {
+            st.push(skill.charAt(i));
         }
         
         for (String sk : skill_trees) {
             Stack<Character> dup_stack = (Stack<Character>)st.clone();
             for (int i = 0; i < sk.length() && !dup_stack.isEmpty(); i++) {
-                if (!skill_list.contains(sk.charAt(i)))
+                if (!skill.contains(sk.substring(i, i + 1)))
                     continue ;
                 if (dup_stack.peek() == sk.charAt(i))
                     dup_stack.pop();
