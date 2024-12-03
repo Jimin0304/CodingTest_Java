@@ -2,31 +2,13 @@ import java.util.*;
 
 class Solution {
     public int solution(int[][] sizes) {
-        int short_len = Math.min(sizes[0][0], sizes[0][1]);
-        int long_len = Math.max(sizes[0][0], sizes[0][1]);
-        
-        for (int i = 1; i < sizes.length; i++) {
-            int short_one = Math.min(sizes[i][0], sizes[i][1]);
-            int long_one = Math.max(sizes[i][0], sizes[i][1]);
-            
-            if (short_one <= short_len && long_one <= long_len)
-                continue ;
-            if (short_one <= short_len && long_one > long_len)
-                long_len = long_one;
-            else if (short_one > short_len && long_one <= long_len) {
-                if (short_one > long_len) {
-                    short_len = long_len;
-                    long_len = short_one;
-                }
-                else
-                    short_len = short_one;
-            }
-            else {
-                short_len = short_one;
-                long_len = long_one;
-            }
+        int width = 0;      // 짧은 걸로 설정
+        int length = 0;     // 긴 걸로 설정
+        for (int[] size : sizes) {
+            width = Math.max(width, Math.min(size[0], size[1]));
+            length = Math.max(length, Math.max(size[0], size[1]));
         }
         
-        return short_len * long_len;
+        return width * length;
     }
 }
