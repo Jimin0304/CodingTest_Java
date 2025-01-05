@@ -1,9 +1,9 @@
 class Solution {
     public int calDiv(int num) {
-        int cnt = 1;
-        for (int i = 1; i <= num / 2; i++) {
-            if (num % i == 0)
-                cnt++;
+        int cnt = 0;
+        for (int i = 1; i <= Math.sqrt(num); i++) {
+            if (i * i == num) cnt++;
+            else if (num % i == 0) cnt += 2;
         }
         return cnt;
     }
