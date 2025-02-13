@@ -1,38 +1,27 @@
-import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] arg) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        int[] cnt = new int[26];
         String str = sc.next();
-        str = str.toUpperCase();
 
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
         for (int i = 0; i < str.length(); i++) {
-            String key = String.valueOf(str.charAt(i));
-            if (map.containsKey(key))
-                map.put(key, map.get(key) + 1);
-            else
-                map.put(String.valueOf(key), 1);
+            cnt[Character.toUpperCase(str.charAt(i)) - 'A']++;
         }
 
-        String result = "";
-        int count = -1;
-        for (String key : map.keySet()) {
-            if (map.get(key) > count) {
-                result = key;
-                count = map.get(key);
+        int[] copy = cnt.clone();
+        Arrays.sort(copy);
+        if (copy[25] == copy[24])
+            System.out.println("?");
+        else {
+            for (int i = 0; i < cnt.length; i++) {
+                if (cnt[i] == copy[25]) {
+                    System.out.println((char)('A' + i));
+                    break ;
+                }
             }
         }
-        map.remove(result);
-
-        for (String key : map.keySet()) {
-            if (map.get(key) == count) {
-                System.out.println("?");
-                return ;
-            }
-        }
-        System.out.println(result);
     }
 }
